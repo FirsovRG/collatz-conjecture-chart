@@ -12,7 +12,8 @@ module.exports = {
     extends: [
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended"
     ],
     rules: {
         "@typescript-eslint/explicit-module-boundary-types": ["off"],
@@ -23,6 +24,14 @@ module.exports = {
         "@typescript-eslint/comma-spacing": ["error"],
         "@typescript-eslint/indent": ["error"],
         "@typescript-eslint/quotes": ["error", "double"],
+        "@typescript-eslint/object-curly-spacing": ["error", "always"],
+        "react/jsx-curly-spacing": [
+            "error",
+            {
+                "when": "always",
+                "children": true 
+            }
+        ],
         "max-len": ["warn", { "code": 80 }]
     }
 };

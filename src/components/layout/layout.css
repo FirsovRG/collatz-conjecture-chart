@@ -1,0 +1,6 @@
+@import '../../vars.css';
+
+.layout {
+    height: 100%;
+    background-color: var(--main-bg-color);
+}
