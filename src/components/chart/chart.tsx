@@ -2,24 +2,32 @@ import React, { useMemo } from "react";
 import { Line } from "react-chartjs-2";
 
 import { CHART_OPTIONS } from "../../constants";
+import { ChartDataSet } from "../../utils/types";
 
 type Props = {
-    labels: Array<string | number>;
-    chartData: number[]
+    chartData: ChartDataSet;
 }
 
-const Chart = React.memo(({ labels, chartData }: Props) => {
-    const data = useMemo(() => ({
-        labels: labels,
-        datasets: [
-            {
-                data: chartData,
-                borderColor: "rgba(255, 255, 255, 0.2)"
-            }
-        ]
-    }), [labels, chartData]);
+const Chart = React.memo(({ chartData }: Props) => {
+    const labels = useMemo(() => chartData.reduce((result, current) => {
+        if (current.length > result.length) {
+            return current
+        }
 
-    
+        return result
+    }, []).map((_item, index) => index), [chartData])
+
+    const data = useMemo(() => ({
+        labels,
+        datasets: chartData.map((data, index) => ({
+            label: index.toString(),
+            data,
+            borderColor: `rgba(255, 255, 255, ${1 / (chartData.length - index)})`
+        }))
+    }), [chartData]);
+
+    console.log(data)
+
     return <Line data={ data } options={ CHART_OPTIONS }/>
 })
 
