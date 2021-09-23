@@ -3,11 +3,12 @@ import { cn as createCn } from "@bem-react/classname";
 
 import Layout from "../../components/layout";
 import Chart  from "../../components/chart";
-import { getChartData, inputValueRegExpValidation } from "../../utils/helpers";
-import Input from "../../shared/input";
-import Button from "../../shared/button";
-import { NUMBER_ONLY_REGEXP } from "../../constants";
+import ControlsForm from "../../components/controls-form";
+import {
+    getChartData, getRandomInt, inputValueRegExpValidation 
+} from "../../utils/helpers";
 import { ChartDataSet } from "../../utils/types";
+import { NUMBER_ONLY_REGEXP } from "../../constants";
 
 import "./app.css";
 
@@ -23,24 +24,41 @@ const App = () => {
         }
     }
 
-    const handleButtonClick = () => {
+    const handleFormSubmit = () => {
         if (inputValue) {
             const calculatedData = getChartData(+inputValue)
             setChartDataSets([...chartDataSets, calculatedData])
+            console.log("here")
         }
     }
+
+    const handleClearButtonClick = () => {
+        setChartDataSets([]);
+    }
+
+    const handleRandomizeButtonClick = () => {
+        const randomNumber = getRandomInt(1000);
+        setInputValue(randomNumber.toString());
+        const calculatedData = getChartData(randomNumber)
+        setChartDataSets([...chartDataSets, calculatedData])
+    }
         
-    return (<div className={ cn() }>
-        <Layout>
-            <Chart 
-                chartData={ chartDataSets }
-            />
-            <Input value={ inputValue } onChange={ handleInputChange }/>
-            <Button onClick={ handleButtonClick }>
-                s
-            </Button>
-        </Layout>
-    </div>)
+    return (
+        <div className={ cn() }>
+            <Layout>
+                <Chart 
+                    chartData={ chartDataSets }
+                />
+                <ControlsForm 
+                    inputValue={ inputValue } 
+                    onInputChange={ handleInputChange } 
+                    onFormSubmit={ handleFormSubmit }
+                    onClearButtonClick={ handleClearButtonClick }
+                    onRandomizeButtonClick={ handleRandomizeButtonClick }
+                />
+            </Layout>
+        </div>
+    )
 }
 
 export default App;

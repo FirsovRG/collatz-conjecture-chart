@@ -34,6 +34,14 @@ module.exports = {
         ],
         "react/prop-types": "off",
         "react/display-name": "off",
+        "react/jsx-first-prop-new-line": ["warn", "multiline"],
+        "react/jsx-max-props-per-line": [1, { "maximum": 2 }],
+        "react/jsx-closing-bracket-location": 1,
+        "newline-before-return": 1,
+        "react/jsx-no-target-blank": 1,
+        "react/jsx-one-expression-per-line": 1,
+        "react/jsx-wrap-multilines": [1, { "return": "parens-new-line" }],
+        "object-curly-newline": ["warn", { "minProperties": 2 }],
         "max-len": ["warn", { "code": 120 }]
     }
 };
