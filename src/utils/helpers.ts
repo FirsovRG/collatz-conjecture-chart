@@ -12,6 +12,7 @@ const getNextNumber = (currentNumber: number) => {
 
 const checkLoopInData = (array: number[]) => {
     const joinedString = array.join(",");
+    
     return joinedString.includes(CHECK_LOOP_SUBSEQUENCE)
 }
 
@@ -27,3 +28,7 @@ export const getChartData = (initialNumber: number) => {
 }
 
 export const inputValueRegExpValidation = (value: string, regExp: RegExp) => regExp.test(value);
+
+export const getRandomInt =(maxLimit: number) => {
+    return Math.floor(Math.random() * maxLimit);
+}

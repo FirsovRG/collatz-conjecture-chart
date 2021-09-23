@@ -1,0 +1,8 @@
+.controls-form {
+    display: flex;
+    align-items: center;
+}
+
+.controls-form-control-item {
+    margin-right: 16px;
+}

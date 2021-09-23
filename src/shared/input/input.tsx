@@ -1,16 +1,22 @@
-import React, { ChangeEvent, useCallback } from "react";
+import React, {
+    ChangeEvent, useCallback 
+} from "react";
 import { cn as createCn } from "@bem-react/classname";
 
 import "./input.css";
 
-const cn = createCn("input");
 
 type Props = {
     value: string;
     onChange: (value: string) => void;
+    className?: string;
 }
 
-const Input = React.memo(({ value, onChange }: Props) => {
+const cn = createCn("input");
+
+const Input = React.memo(({
+    value, onChange, className 
+}: Props) => {
     const handleInputChange = useCallback(
         (event: ChangeEvent<HTMLInputElement>) => {
             onChange(event.target.value);
@@ -20,7 +26,7 @@ const Input = React.memo(({ value, onChange }: Props) => {
         <input 
             onChange={ handleInputChange } 
             value={ value }
-            className={ cn() }
+            className={ cn(null, [className]) }
         />
     )
 })

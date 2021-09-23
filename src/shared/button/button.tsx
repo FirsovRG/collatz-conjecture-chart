@@ -3,16 +3,25 @@ import { cn as createCn } from "@bem-react/classname";
 
 import "./button.css";
 
-const cn = createCn("button");
 
 type Props = {
-    onClick: () => void;
+    type?: "button" | "submit" | "reset"
+    onClick?: () => void;
+    className?: string;
 }
 
-const Button: React.FC<Props> = React.memo(({ onClick, children }) => 
-    <button onClick={ onClick } className={ cn() }>
+const cn = createCn("button");
+
+const Button: React.FC<Props> = React.memo(({
+    children, type="button", onClick, className 
+}) => (
+    <button
+        type={ type } onClick={ onClick }
+        className={ cn(null, [className]) }
+    >
         { children }
     </button>
+)
 )
 
 export default Button;

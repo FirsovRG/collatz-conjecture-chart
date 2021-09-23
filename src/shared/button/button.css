@@ -1,12 +1,16 @@
 @import '../../vars.css';
 
 .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     outline: none;
     cursor: pointer;
     background-color: var(--full-white);
     border: 0;
     border-radius: var(--border-radius);
     min-height: 48px;
+    min-width: 48px;
     font-size: var(--accent-font-size);
     transition: 0.2s background-color;
 }

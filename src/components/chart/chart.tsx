@@ -26,8 +26,6 @@ const Chart = React.memo(({ chartData }: Props) => {
         }))
     }), [chartData]);
 
-    console.log(data)
-
     return <Line data={ data } options={ CHART_OPTIONS }/>
 })
 
