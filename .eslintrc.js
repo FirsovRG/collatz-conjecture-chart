@@ -34,6 +34,6 @@ module.exports = {
         ],
         "react/prop-types": "off",
         "react/display-name": "off",
-        "max-len": ["warn", { "code": 80 }]
+        "max-len": ["warn", { "code": 120 }]
     }
 };

@@ -1,0 +1,17 @@
+@import '../../vars.css';
+
+.input {
+    outline: none;
+    background: transparent;
+    border: 1px solid var(--light-white);
+    border-radius: var(--border-radius);
+    padding: 0 var(--gap-16);
+    min-height: 48px;
+    color: var(--full-white);
+    font-size: var(--regular-font-size);
+    transition: 0.2s background-color;
+}
+
+.input:focus {
+    background-color: var(--lighter-white);
+}

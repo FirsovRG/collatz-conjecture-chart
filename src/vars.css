@@ -1,3 +1,14 @@
 :root {
     --main-bg-color: #14293c;
+    --full-white: #ffffff;
+    --strong-white: rgba(255, 255, 255, 0.8);
+    --light-white: rgba(255, 255, 255, 0.2);
+    --lighter-white: rgba(255, 255, 255, 0.05);
+
+    --border-radius: 4px;
+
+    --gap-16: 16px;
+
+    --regular-font-size: 16px;
+    --accent-font-size: 18px;
   }

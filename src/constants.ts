@@ -22,3 +22,7 @@ export const CHART_OPTIONS = {
         }
     }
 }
+
+export const NUMBER_ONLY_REGEXP = /^[\d]*$/;
+
+export const CHECK_LOOP_SUBSEQUENCE = "1,4,2,1";

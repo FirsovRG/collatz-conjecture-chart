@@ -1,23 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { cn as createCn } from "@bem-react/classname";
 
 import Layout from "../../components/layout";
 import Chart  from "../../components/chart";
-import { getChartData } from "../../utils/helpers";
+import { getChartData, inputValueRegExpValidation } from "../../utils/helpers";
+import Input from "../../shared/input";
+import Button from "../../shared/button";
+import { NUMBER_ONLY_REGEXP } from "../../constants";
+import { ChartDataSet } from "../../utils/types";
 
 import "./app.css";
 
 const cn = createCn("app");
 
-const chartData = getChartData(11);
+const App = () => {
+    const [inputValue, setInputValue] = useState("");
+    const [chartDataSets, setChartDataSets] = useState<ChartDataSet>([])
 
-const App = () => 
-    <div className={ cn() }>
+    const handleInputChange = (value: string) => {
+        if (inputValueRegExpValidation(value, NUMBER_ONLY_REGEXP)) {
+            setInputValue(value)
+        }
+    }
+
+    const handleButtonClick = () => {
+        if (inputValue) {
+            const calculatedData = getChartData(+inputValue)
+            setChartDataSets([...chartDataSets, calculatedData])
+        }
+    }
+        
+    return (<div className={ cn() }>
         <Layout>
             <Chart 
-                labels={ chartData.map((_item, index) => index) } 
-                chartData={ chartData }/>
+                chartData={ chartDataSets }
+            />
+            <Input value={ inputValue } onChange={ handleInputChange }/>
+            <Button onClick={ handleButtonClick }>
+                s
+            </Button>
         </Layout>
-    </div>
+    </div>)
+}
 
 export default App;
